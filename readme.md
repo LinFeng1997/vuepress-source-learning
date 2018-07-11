@@ -14,7 +14,8 @@
 >React 替代品：[react-static](https://github.com/nozzle/react-static)、[gastby](https://www.gatsbyjs.org/)
 
 ### 2. 实现流程是什么样的？
-![流程](./imgs/plugin.png)
+![流程](./imgs/vuepress-stream.png)
+![阶段](./imgs/plugin.png)
 
 ### 3. 主要用到了哪些技术？
 * 命令行库 commandar

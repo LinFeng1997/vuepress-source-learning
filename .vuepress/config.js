@@ -1,5 +1,7 @@
 module.exports = {
     themeConfig: {
+        repo: 'LinFeng1997/vuepress-source-learning',
+        editLinkText: '在 GitHub 上编辑此页',
         sidebar: [
             '/', ['/cli', '命令行工具'],
             ['/webpack', 'webpack'],
