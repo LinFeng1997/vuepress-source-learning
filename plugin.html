@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>插件系统 (10分钟）</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/8.styles.436a3e1b.css" as="style"><link rel="preload" href="/assets/js/app.49281a10.js" as="script"><link rel="preload" href="/assets/js/3.859d1a04.js" as="script"><link rel="prefetch" href="/assets/js/0.2d828854.js"><link rel="prefetch" href="/assets/js/1.b7ea3146.js"><link rel="prefetch" href="/assets/js/2.932d15f2.js"><link rel="prefetch" href="/assets/js/4.0ffaff1a.js"><link rel="prefetch" href="/assets/js/5.4cdabfdf.js"><link rel="prefetch" href="/assets/js/6.472a0040.js"><link rel="prefetch" href="/assets/js/7.c5cbf5a2.js">
+    <link rel="stylesheet" href="/assets/css/8.styles.436a3e1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><a href="https://github.com/LinFeng1997/vuepress-source-learning" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><a href="https://github.com/LinFeng1997/vuepress-source-learning" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Vuepress 源码学习心得分享</a></li><li><a href="/cli.html" class="sidebar-link">命令行工具</a></li><li><a href="/webpack.html" class="sidebar-link">webpack</a></li><li><a href="/markdown.html" class="sidebar-link">markdown 拓展</a></li><li><a href="/theme.html" class="sidebar-link">主题</a></li><li><a href="/jest.html" class="sidebar-link">单元测试</a></li><li><a href="/plugin.html" class="active sidebar-link">插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/plugin.html#插件系统-10分钟）" class="sidebar-link">插件系统 (10分钟）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/plugin.html#设计思路" class="sidebar-link">设计思路</a></li><li class="sidebar-sub-header"><a href="/plugin.html#功能" class="sidebar-link">功能</a></li></ul></li></ul></li><li><a href="/other.html" class="sidebar-link">其他</a></li></ul></div><div class="page"><div class="content"><h2 id="插件系统-10分钟）"><a href="#插件系统-10分钟）" aria-hidden="true" class="header-anchor">#</a> 插件系统 (10分钟）</h2><h3 id="设计思路"><a href="#设计思路" aria-hidden="true" class="header-anchor">#</a> 设计思路</h3><p>构造插件的方式是 new 一个类</p><ul><li>构造参数是 pluginConfigs</li><li>实例属性有 hooks、apis</li><li>初始钩子定义了 ready、compiled、updated、generated 四种状态</li><li>初始 api 有 client、chainWebpack、enhanceDevServer、extendMarkdown、enhanceAppFiles、outFiles、extendPageData 七种
+<ul><li>注册、拓展钩子和 api 逻辑较简单，望名生意即可</li><li>解析插件选项的两个方法一个为批量，一个为单个。批量处理时可以看出支持插件为一个函数或对象，单个处理就是注册 api 和钩子。</li><li>hook.js 导出一个 Hook 类，后期重构为 Tapable 类，值得玩味
+<ul><li>构造参数是 name</li><li>实例属性有 name 和 handles</li><li>实例方法有 tap (symbol, handler) 和 remove (symbol)、async run ()，都是字面意思。</li></ul></li></ul></li><li>在 plugin-api 下增加文件，提供插件的 API
+<ul><li>AbstractAPI 基类
+<ul><li>name、items 实例属性</li><li>add、remove、run 三个实例方法</li><li>values 只读属性</li></ul></li><li>EnhanceAppFiles 全局增强类
+<ul><li><code>add (value /* Array&lt;String&gt; | () =&gt; Array&lt;String&gt; */, pluginName)</code> 添加插件</li><li>async run (...args) 应用全局增强逻辑</li><li>getEnhanceAppCode (files) 生成代码</li><li>resolveItems () 映射项成为插件</li></ul></li><li>ExtendPageData 处理站点数据类
+<ul><li>run (args) 拓展站点数据</li></ul></li><li>instantiateAPI 导出一个 instantiateAPI(name) 函数
+<ul><li>可选择是全局增强应用、站点数据、动态客户端代码</li></ul></li><li>AdditionalPagesOption 增加额外页面数据类</li></ul></li><li>增加一个插件上下文类，提供一些基本信息
+<ul><li>如 sourceDir、outDir、themePath</li><li>冻结了它的 options 属性</li><li>增加 writeTemp 实例方法</li></ul></li></ul><h3 id="功能"><a href="#功能" aria-hidden="true" class="header-anchor">#</a> 功能</h3><ul><li>支持带有若干个钩子、api 的插件，选项可以是字符串或者函数以及数组
+<ul><li>注册钩子和 api 的时候支持类型检测</li><li>分离 lastUpdated、register-global-components、enhance-app、activeHeaderLinks 等为插件</li></ul></li><li>支持 chainWebpack 的选项</li><li>支持 markdown 和 devServer 的选型</li><li>支持动态生成客户端代码的选项</li><li>支持客户端混入选项</li><li>增加 TranslationHelper 组件用于辅助切换语言时定位</li></ul></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/jest.html" class="prev">
+          单元测试
+        </a></span><span class="next"><a href="/other.html">
+          其他
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/3.859d1a04.js" defer></script><script src="/assets/js/app.49281a10.js" defer></script>
+  </body>
+</html>

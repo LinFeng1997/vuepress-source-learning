@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端主题（13分钟）</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/8.styles.436a3e1b.css" as="style"><link rel="preload" href="/assets/js/app.49281a10.js" as="script"><link rel="preload" href="/assets/js/1.b7ea3146.js" as="script"><link rel="prefetch" href="/assets/js/3.859d1a04.js"><link rel="prefetch" href="/assets/js/0.2d828854.js"><link rel="prefetch" href="/assets/js/2.932d15f2.js"><link rel="prefetch" href="/assets/js/4.0ffaff1a.js"><link rel="prefetch" href="/assets/js/5.4cdabfdf.js"><link rel="prefetch" href="/assets/js/6.472a0040.js"><link rel="prefetch" href="/assets/js/7.c5cbf5a2.js">
+    <link rel="stylesheet" href="/assets/css/8.styles.436a3e1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><a href="https://github.com/LinFeng1997/vuepress-source-learning" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><a href="https://github.com/LinFeng1997/vuepress-source-learning" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Vuepress 源码学习心得分享</a></li><li><a href="/cli.html" class="sidebar-link">命令行工具</a></li><li><a href="/webpack.html" class="sidebar-link">webpack</a></li><li><a href="/markdown.html" class="sidebar-link">markdown 拓展</a></li><li><a href="/theme.html" class="active sidebar-link">主题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/theme.html#前端主题（13分钟）" class="sidebar-link">前端主题（13分钟）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/theme.html#布局" class="sidebar-link">布局</a></li><li class="sidebar-sub-header"><a href="/theme.html#pwa" class="sidebar-link">PWA</a></li><li class="sidebar-sub-header"><a href="/theme.html#自定义应用或主题" class="sidebar-link">自定义应用或主题</a></li><li class="sidebar-sub-header"><a href="/theme.html#其他" class="sidebar-link">其他</a></li></ul></li></ul></li><li><a href="/jest.html" class="sidebar-link">单元测试</a></li><li><a href="/plugin.html" class="sidebar-link">插件</a></li><li><a href="/other.html" class="sidebar-link">其他</a></li></ul></div><div class="page"><div class="content"><h2 id="前端主题（13分钟）"><a href="#前端主题（13分钟）" aria-hidden="true" class="header-anchor">#</a> 前端主题（13分钟）</h2><h3 id="布局"><a href="#布局" aria-hidden="true" class="header-anchor">#</a> 布局</h3><p><img src="/assets/img/layout.b1b8bd8b.png" alt="布局"></p><ul><li>页面、布局、首页和 404 页
+<ul><li>页面的上一页和下一页来源于 prev、next 两个计算属性，从 yaml 和 resolvePage 获取</li><li>全局监听 scroll 事件，重新设置激活的哈希(节流)</li><li>随机 404 消息</li></ul></li><li>导航、搜索框和下拉框
+<ul><li>algolia 搜索功能</li></ul></li><li>侧边栏
+<ul><li>resolveItem(item, pages) 将 item 分三种情况：字符串、数组、对象,将得到的配置映射成侧边栏数据</li><li>渲染出的是 router-link 组件，使用自定义激活类匹配逻辑</li></ul></li><li>样式管理
+<ul><li>config.stylus 存储变量，如 $textColor、$accentColor、$borderColor、$codeBgColor、$sidebarWidth、$contentWidth</li><li>theme 和 mobile 分别是整体 和 移动端样式</li><li>arrow.stylus 四个方向的箭头样式</li><li>code.stylus 代码块和高亮代码样式</li><li>custom-blocks.stylus 提示块样式</li></ul></li><li>ga 使用
+<ul><li>一个开放 API 平台，可以用来存储网站内容以供搜索</li><li>需要 <a href="https://github.com/algolia/docsearch-scraper" target="_blank" rel="noopener noreferrer">docsearch-scraper<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 生成的数据</li></ul></li><li>国际化支持
+<ul><li>基于配置</li></ul></li></ul><h3 id="pwa"><a href="#pwa" aria-hidden="true" class="header-anchor">#</a> PWA</h3><p>使用 worker 实现</p><h3 id="自定义应用或主题"><a href="#自定义应用或主题" aria-hidden="true" class="header-anchor">#</a> 自定义应用或主题</h3><p>比如西瓜播放器文档</p><h3 id="其他"><a href="#其他" aria-hidden="true" class="header-anchor">#</a> 其他</h3><ul><li>$withBase 方法</li><li>动态 import 语法兼容一开始就访问浏览器 API 的库</li></ul></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/markdown.html" class="prev">
+          markdown 拓展
+        </a></span><span class="next"><a href="/jest.html">
+          单元测试
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/1.b7ea3146.js" defer></script><script src="/assets/js/app.49281a10.js" defer></script>
+  </body>
+</html>

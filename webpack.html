@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack 管理（10分钟）</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/8.styles.436a3e1b.css" as="style"><link rel="preload" href="/assets/js/app.49281a10.js" as="script"><link rel="preload" href="/assets/js/0.2d828854.js" as="script"><link rel="prefetch" href="/assets/js/3.859d1a04.js"><link rel="prefetch" href="/assets/js/1.b7ea3146.js"><link rel="prefetch" href="/assets/js/2.932d15f2.js"><link rel="prefetch" href="/assets/js/4.0ffaff1a.js"><link rel="prefetch" href="/assets/js/5.4cdabfdf.js"><link rel="prefetch" href="/assets/js/6.472a0040.js"><link rel="prefetch" href="/assets/js/7.c5cbf5a2.js">
+    <link rel="stylesheet" href="/assets/css/8.styles.436a3e1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><a href="https://github.com/LinFeng1997/vuepress-source-learning" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><a href="https://github.com/LinFeng1997/vuepress-source-learning" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Vuepress 源码学习心得分享</a></li><li><a href="/cli.html" class="sidebar-link">命令行工具</a></li><li><a href="/webpack.html" class="active sidebar-link">webpack</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webpack.html#webpack-管理（10分钟）" class="sidebar-link">webpack 管理（10分钟）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webpack.html#base、client、server-三套配置" class="sidebar-link">base、client、server 三套配置</a></li><li class="sidebar-sub-header"><a href="/webpack.html#编写-webpack-插件（打断点演示）" class="sidebar-link">编写 webpack 插件（打断点演示）</a></li></ul></li></ul></li><li><a href="/markdown.html" class="sidebar-link">markdown 拓展</a></li><li><a href="/theme.html" class="sidebar-link">主题</a></li><li><a href="/jest.html" class="sidebar-link">单元测试</a></li><li><a href="/plugin.html" class="sidebar-link">插件</a></li><li><a href="/other.html" class="sidebar-link">其他</a></li></ul></div><div class="page"><div class="content"><h2 id="webpack-管理（10分钟）"><a href="#webpack-管理（10分钟）" aria-hidden="true" class="header-anchor">#</a> webpack 管理（10分钟）</h2><p>webpack-chain 动态生成配置，而不是声明配置</p><h3 id="base、client、server-三套配置"><a href="#base、client、server-三套配置" aria-hidden="true" class="header-anchor">#</a> base、client、server 三套配置</h3><p>和 Vue 的 SSR 三套配置对应</p><ul><li>基础配置
+<ul><li>实例化一个 markdown，在 markdown-loader 的参数中传进去</li><li>只在需要兼容浏览器时时添加 babel-loader</li><li>为 rule 添加 postcss-loader，配置 autoprefixer 插件</li><li>createCSSRule 批量应用样式加载规则
+<ul><li>把关于 loader 的逻辑抽象到 applyLoaders(rule, modules) 里
+<ul><li>为 css-loader 增加选项：是否模块化、生产环境压缩、打包文件名设置</li></ul></li></ul></li><li>获取缓存目录和缓存标识在 cache-loader 和 vue-loader 选项中使用，封装在 applyVuePipeline(rule) 里
+<ul><li>vue 和 markdown 规则都调用了 applyVuePipeline，markdown 规则额外使用 markdown-loader(./markdownLoader)，参数传 sourceDir, markdown</li></ul></li><li>使用 injections 注入常量开启 GA 和 Worker</li></ul></li><li>开发配置
+<ul><li>模拟 node 变量</li><li>针对服务端构建生成客户端 manifest 文件
+<ul><li>添加 optimize-css-assets-webpack-plugin 插件，在选项里对 cssProcessorOptions 配置安全模式</li></ul></li></ul></li><li>构建配置
+<ul><li>针对 SSR 添加部分配置</li><li>使用 copy-webpack-plugin 复制 .vuepress/public 下的资源文件</li></ul></li></ul><h3 id="编写-webpack-插件（打断点演示）"><a href="#编写-webpack-插件（打断点演示）" aria-hidden="true" class="header-anchor">#</a> 编写 webpack 插件（打断点演示）</h3><p>apply 里是插件逻辑</p><ul><li>markdownLoader.js 实现 md 转 vue
+<ul><li>通过 getOptions 方法获取 markdown-it 实例</li><li>新建 devCache，用于手动缓存链式加载器，用文件哈希值做键
+<ul><li>使用 lru-cache 算法，当处于线上环境或者已有 vue 文件使用缓存</li><li>允许 md-it 添加自定义插件，并在 render 函数中注册数据：先检查相对链接是否有效，再获取结果模板，加入缓存</li></ul></li><li>yaml front matter 也在此被转成 markdown
+<ul><li>创建一个缓存哈希表用来 diff frontmatter 和 标题，如果有变化，触发更新事件</li></ul></li><li>生成 vue 的 html 代码
+<ul><li>在模板里把要提升的标签也拼接进去，使用 hoist 插件产生的标签</li></ul></li><li>新导出一个 frontmatterEmitter 为一个事件触发器</li></ul></li><li>clientPlugin.js 用作客户端 ssr 渲染的插件 VueSSRClientPlugin
+<ul><li>在 compiler 的钩子里触发 vue-client-plugin
+<ul><li>获取 manifest 对象</li><li>遍历 stats.modules，忽略多个块中的重复块，移除拓展的 hash，找到与同一块相关的所有资产模块</li><li>最终定义 compilation 的 assets 数组内容，调用回调</li></ul></li></ul></li><li>HeadPlugin.js，将传入的标签们生成 head 标签推入到 data 里</li><li>DevLogPlugin.js
+<ul><li>在 apply(compiler) 中设置 vuepress-log 钩子：先清屏，然后从 options 获取主机、端口、公共路径，提示相关构建信息。</li></ul></li></ul></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/cli.html" class="prev">
+          命令行工具
+        </a></span><span class="next"><a href="/markdown.html">
+          markdown 拓展
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/0.2d828854.js" defer></script><script src="/assets/js/app.49281a10.js" defer></script>
+  </body>
+</html>
